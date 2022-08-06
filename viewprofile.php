@@ -92,20 +92,6 @@
         
     }
 
-    // cannot figure out how to display the profile info once and the past post multiple times. 
-    /* Get the number of rows in the result set */
-    /* while ($row = mysqli_fetch_array($result)){
-        echo "
-        <img src=\"{$row['profileimg']}\" alt=\"profile image\" style=\"width: 100px; height: 100px; border-radius: 50px;\">
-        <h1>{$row['username']}</h1>
-        <h5>Since {$row['signup_date']}</h5>
-        <h5>{$row['postmade']} post made</h5>
-        <hr>
-        <h3>[Past Posts]</h3>
-        <h3 class=\"topic\">{$row['topic']}</h3> - <span class=\"uploaddate\">{$row['upload_date']}</span> - <button><a href=\"edit.php?userID={$row['user_id']}&dataID={$row['data_id']}\">Edit</a></button>
-        <p class=\"content\">{$row['content']}</p>";
-    } */
-
     mysqli_close($conn);
     ?>
 </body>

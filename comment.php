@@ -25,13 +25,36 @@
     
     $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-    $query = "select * from user_info where user_id = {$userID}";
+    $query = "SELECT * from user_info where user_id = {$userID}";
 
-    $query = "INSERT into comment() values (\"$data_id\", \"$date\", \"$userID\", \"$comment\")";
     $result = mysqli_query($conn, $query);
+
+    /* $row_cnt = $result->num_rows; */
+    /* echo "{$row_cnt}"; */
+    //display the data
+    if ($result->num_rows > 0){     
+        $row = mysqli_fetch_array($result);
+        $commenterUN = $row['username'];
+    }
+
     mysqli_close($conn);
 
 
+    $servername = "localhost";
+    $username = "root";
+    $password = "Shane4546?";
+    $dbname = "boardinfo";
+    
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    $query = "INSERT into comment() values (\"$data_id\", \"$date\", \"$commenterUN\", \"$comment\")";
+
+    $result = mysqli_query($conn, $query);
+
+    mysqli_close($conn);
+    
+    // checking the funcyionality
+    /* echo "upload completed, {$userID}, {$data_id}, {$comment}, {$date}, {$commenterUN}"; */
     ?>
 </body>
 </html>
