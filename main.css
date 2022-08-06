@@ -1,0 +1,130 @@
+body{
+    width: 80%;
+    margin: 5% auto;
+}
+header{
+    margin: 10px 0;
+    background-color: rgba(228, 76, 21, 0.89);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.userinfoicon{
+    background-color: aquamarine;
+    display: inline;
+}
+.divnavbar{
+    margin-right: 30px;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+}
+.navbar li{
+    margin-left: 25px;
+    list-style: none;
+}
+.navbar li a{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+.navbar li a:hover{
+    text-shadow: 2px 2px 2px black;
+}
+.navform{
+    margin-bottom: 0px;
+}
+.navbutton{
+    border: 1px solid transparent;
+    background-color: rgba(228, 76, 21, 0.89);
+    color: white;
+    font-weight: bold;
+    width: 80px;
+    height: 35px;
+    border-radius: 5px;
+}
+.navbutton:hover{
+    border: 1px solid white;
+    box-shadow: 2px 2px 5px rgba(228, 76, 21, 1);
+}
+.topic{
+    background-color: rgba(255, 0, 0, 0.13);
+    border-radius: 5px;
+    border: 1px solid black;
+    display: inline;
+    padding: 3px 5px;
+}
+
+.content{
+    background-color: rgba(255, 0, 0, 0.13);
+    border-radius: 5px;
+    border: 1px solid black;
+    
+}
+
+.circle{
+    width: 40px;
+    margin: 10px 0;
+    display:flex;
+    align-items: center;
+}
+
+
+.circlebutton{
+    padding: 1px;
+    color: black;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+}
+
+.commentbutton{
+    margin-bottom: 30px;
+    margin-left: 88%;
+}
+
+.uploaddate{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+}
+
+.profileimage{
+    max-width: 40px;
+    border-radius: 20px;
+}
+.profilebutton{
+    border-radius: 20px;
+    padding: 0px;
+    margin-right: 10px;
+    height: 46px;;
+}
+.profilebutton:hover{
+    box-shadow: 1px 1px 2px black;
+}
+
+.username{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;  
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentinprofile{
+    margin-bottom: 50px;
+    background-color: rgba(255, 0, 0, 0.13);
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.commentsec{
+    width: 80%;
+    margin-left: auto;
+    margin-right: 5%;
+    background-color: rgba(226, 27, 27, 0.274);
+}
