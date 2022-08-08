@@ -1,6 +1,7 @@
 <!-- 2. gaeshinpan make DB for keijiban title, content, added date, modified date, comment, author and make it appear in table       also make a form so that list and login form -->
 <!-- 8/8 monday 7-9       8/9 tuesday TBD-->
 <?php
+        global $userID;
         $userID = $_POST['userID'];
 ?>
 <!DOCTYPE html>
@@ -109,15 +110,14 @@
             while ($row = mysqli_fetch_array($result)){
                 echo "<script>
                         var x = document.getElementById(\"commentfor{$row['data_id']}\");
-                        x.innerHTML += \"<div style='display: flex; align-items: center;'><button class='commentuserbut' style='border-radius:20px;padding:0px; width: 40px; height:40px;'><img src='{$row['profileimg']}' style='width:30px; height:30px;'></button><h5 style='margin: 5px; display: inline;'>{$row['comment_content']}</h5></div>\";
+                        x.innerHTML += \"<div style='display: flex; align-items: center;'><form action='userprofile.php' method='POST' style='margin-bottom: 0px;'><input type='hidden' name='profileID' id='profileID' value='{$row['user_id']}><input type='hidden' name='userID' id='userID' value='{$userID}'><button type='submit' class='profilebutton'><img src='{$row['profileimg']}' alt='profileimg' class='profileimage'></button></form><h5 style='margin: 5px; display: inline;'>{$row['comment_content']}</h5></div>\";
                     </script>";
                 }
-                
-                    
-
             mysqli_close($conn);
             
         ?>
+        <!-- <button class='commentuserbut' style='border-radius:20px;padding:0px; width: 40px; height:40px;'><img src='{$row['profileimg']}' style='width:30px; height:30px; border-radius:20px;'></button> -->
+
         
         <script>
             function opencomment(comnum){

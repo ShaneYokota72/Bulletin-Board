@@ -53,6 +53,24 @@
 
     mysqli_close($conn);
     
+    echo "<form name=\"myForm\" action=\"index.php\" method=\"POST\">
+            <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
+        </form>";
+    echo "
+    <script>
+        window.onload=function(){
+            var auto = setTimeout(function(){ autoRefresh(); }, 100);
+
+            function submitform(){
+            document.forms[\"myForm\"].submit();
+            }
+
+            function autoRefresh(){
+            clearTimeout(auto);
+            auto = setTimeout(function(){ submitform(); autoRefresh(); }, 100);
+            }
+        }
+    </script>";
     // checking the funcyionality
     /* echo "upload completed, {$userID}, {$data_id}, {$comment}, {$date}, {$commenterUN}"; */
     ?>
