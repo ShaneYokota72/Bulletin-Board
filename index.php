@@ -12,7 +12,7 @@
     <title>Bulletin Board</title>
     <link rel="stylesheet" href="./main.css">
 </head>
-<body>
+<body onload="loadcomments();">
     <header>
         <img src="reddit-logo.png" alt="Reddit-logo" style="max-height: 70px;margin-left: 5px; border-radius: 10px;">
         <div class="divnavbar">
@@ -72,30 +72,51 @@
             <span class=\"username\">{$row['username']}</span></div> 
             <h3 class=\"topic\">{$row['topic']}</h3> - <span class=\"uploaddate\">{$row['upload_date']}</span>
             <p class=\"content\">{$row['content']}</p>
-            <div class=\"commentsec\" id=\"comment{$row['data_id']}\" style=\"display: none;\">
+            <div class=\"commentsec\" id=\"comment{$row['data_id']}\" style=\"display: none; padding: 10px;\">
                 <form action=\"comment.php\" method=\"POST\">
                     <input type=\"hidden\" name=\"data_id\" value=\"{$row['data_id']}\">
                     <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
-                    Comment: <input type=\"text\" name=\"commentcontent\">
+                    Comment: <input type=\"text\" name=\"commentcontent\" style=\"width:600px;\">
                     <button type=\"submit\" name=\"click\">Comment on Post</button>
                 </form>
+
+                <div id=\"commentfor{$row['data_id']}\">
+                    
+                </div>
                 
-                <h1>yo</h1>
-                <h2>comment</h2>
-                <h3>section</h3>
             </div>
             <button class=\"commentbutton\" onclick=\"opencomment({$row['data_id']});\">comment</button>";
         }
-
+        
         mysqli_close($conn);
-
-
         // Check connection
         /* if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
         }
         echo "Connected successfully"; */
+        ?>
+        <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "Shane4546?";
+            $dbname = "boardinfo";
+            
+            $conn = mysqli_connect($servername, $username, $password, $dbname);
+    
+            $query = "SELECT * FROM comment join user_info on comment_username = username";
+            $result = mysqli_query($conn, $query);
 
+            while ($row = mysqli_fetch_array($result)){
+                echo "<script>
+                        var x = document.getElementById(\"commentfor{$row['data_id']}\");
+                        x.innerHTML += \"<div style='display: flex; align-items: center;'><button class='commentuserbut' style='border-radius:20px;padding:0px; width: 40px; height:40px;'><img src='{$row['profileimg']}' style='width:30px; height:30px;'></button><h5 style='margin: 5px; display: inline;'>{$row['comment_content']}</h5></div>\";
+                    </script>";
+                }
+                
+                    
+
+            mysqli_close($conn);
+            
         ?>
         
         <script>
