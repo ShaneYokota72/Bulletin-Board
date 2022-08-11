@@ -1,4 +1,4 @@
-<!-- 2. gaeshinpan make DB for keijiban title, content, added date, modified date, comment, author and make it appear in table       also make a form so that list and login form -->
+<!-- 2. make DB for keijiban title, content, added date, modified date, comment, author and make it appear in table       also make a form so that list and login form -->
 <!-- 8/8 monday 7-9       8/9 tuesday TBD-->
 <?php
         global $userID;

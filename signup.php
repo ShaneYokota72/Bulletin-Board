@@ -1,3 +1,4 @@
+<!-- when signing up, make sure to link the info to user_into table in the DB. img link, postmade, username. etc -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,7 @@
         $UNSU = $_POST['UNSU'];
         $PWSU = $_POST['PWSU'];
         $PWSUCF = $_POST['PWSUCF'];
+        $PWhash = hash("sha256", $PWSU);
 
         /* echo "{$UNSU}<br>";
         echo "{$PWSU}<br>";
@@ -23,6 +25,8 @@
         function Adduser(){
             global $UNSU;
             global $PWSU;
+            global $PWhash;
+
 
             $servername = "localhost";
             $username = "root";
@@ -31,7 +35,7 @@
             
             $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-            $query = "INSERT into login_signup() values (default, \"{$UNSU}\", \"{$PWSU}\")";
+            $query = "INSERT into login_signup() values (default, \"{$UNSU}\", \"{$PWhash}\")";
             $result = mysqli_query($conn, $query);
             
             mysqli_close($conn);

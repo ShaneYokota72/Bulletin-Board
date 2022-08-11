@@ -12,6 +12,7 @@
     <?php
         $UN = $_POST['username'];
         $PW = $_POST['password'];
+        $PWhash = hash("sha256", $PW);
 
         $servername = "localhost";
         $username = "root";
@@ -20,37 +21,44 @@
         
         $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-        $query = "SELECT * FROM login_signup WHERE username = '{$UN}' and password = '{$PW}'";
+        $query = "SELECT * FROM login_signup WHERE username = '{$UN}'";
         $result = mysqli_query($conn, $query);
         if ($result->num_rows > 0){
             $row = mysqli_fetch_array($result);
-            echo "<form name=\"myForm\" action=\"index.php\" method=\"POST\">
+            if($row['password'] == $PWhash){
+                $_SESSION["userName"] = "{$PWhash}";
+
+                /* echo "사용자이름: {$_SESSION['userName']} 세션 설정했습니다.<br>";
+                echo "<a href=\"session_test.php\">테스트 페이지로 이동</a>"; */
+
+                echo "<form name=\"myForm\" action=\"index.php\" method=\"POST\">
                     <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$row['user_id']}\">
                 </form>";
-            echo "
-            <script>
-                window.onload=function(){
-                    var auto = setTimeout(function(){ autoRefresh(); }, 100);
-        
-                    function submitform(){
-                    document.forms[\"myForm\"].submit();
+                echo "
+                <script>
+                    window.onload=function(){
+                        var auto = setTimeout(function(){ autoRefresh(); }, 100);
+            
+                        function submitform(){
+                        document.forms[\"myForm\"].submit();
+                        }
+            
+                        function autoRefresh(){
+                        clearTimeout(auto);
+                        auto = setTimeout(function(){ submitform(); autoRefresh(); }, 100);
+                        }
                     }
-        
-                    function autoRefresh(){
-                    clearTimeout(auto);
-                    auto = setTimeout(function(){ submitform(); autoRefresh(); }, 100);
-                    }
-                }
-            </script>";
-            /* echo "<script>
-                const userID = document.getElementById('userID')
-                const form = document.querySelector('form')
-                
-                fileInput.addEventListener('change', () => {
-                form.submit();
-                });
-            </script>"; */
-            /* header("Location:/Bulletin%20Board/index.php"); */
+                </script>";
+                /* echo "<script>
+                    const userID = document.getElementById('userID')
+                    const form = document.querySelector('form')
+                    
+                    fileInput.addEventListener('change', () => {
+                    form.submit();
+                    });
+                </script>"; */
+                /* header("Location:/Bulletin%20Board/index.php"); */
+            }
         } else {
             die("
             <div class=\"login\">
