@@ -26,38 +26,20 @@
         if ($result->num_rows > 0){
             $row = mysqli_fetch_array($result);
             if($row['password'] == $PWhash){
+                session_start();
                 $_SESSION["userName"] = "{$PWhash}";
-
-                /* echo "사용자이름: {$_SESSION['userName']} 세션 설정했습니다.<br>";
-                echo "<a href=\"session_test.php\">테스트 페이지로 이동</a>"; */
-
-                echo "<form name=\"myForm\" action=\"index.php\" method=\"POST\">
-                    <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$row['user_id']}\">
-                </form>";
-                echo "
-                <script>
-                    window.onload=function(){
-                        var auto = setTimeout(function(){ autoRefresh(); }, 100);
-            
-                        function submitform(){
-                        document.forms[\"myForm\"].submit();
-                        }
-            
-                        function autoRefresh(){
-                        clearTimeout(auto);
-                        auto = setTimeout(function(){ submitform(); autoRefresh(); }, 100);
-                        }
-                    }
-                </script>";
-                /* echo "<script>
-                    const userID = document.getElementById('userID')
-                    const form = document.querySelector('form')
-                    
-                    fileInput.addEventListener('change', () => {
-                    form.submit();
-                    });
-                </script>"; */
-                /* header("Location:/Bulletin%20Board/index.php"); */
+                header("Location:/Bulletin%20Board/index.php");
+            } else {
+                die("
+            <div class=\"login\">
+                <h3>LOGIN</h3>
+                <form action=\"authorize.php\" method=\"POST\">
+                    USERNAME: <input type=\"text\" name=\"username\"><br>
+                    PASSWORD: <input type=\"password\" name=\"password\"><br>
+                    <button type=submit>LOGIN</button>
+                </form>
+                <h5>Login failed. <a href=\"login.html\">Try Aging</a> or <a href=\"signup.html\">Make an account</a></h5>
+            </div>");
             }
         } else {
             die("
@@ -72,7 +54,6 @@
             </div>");
             
         }
-
         mysqli_close($conn);
     ?>
 </body>

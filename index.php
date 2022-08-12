@@ -1,8 +1,11 @@
 <!-- 2. make DB for keijiban title, content, added date, modified date, comment, author and make it appear in table       also make a form so that list and login form -->
 <!-- 8/8 monday 7-9       8/9 tuesday TBD-->
-<?php
-        global $userID;
-        $userID = $_POST['userID'];
+<?php 
+    session_start();
+    echo "UN is";
+    echo $_SESSION["userName"];
+    /* global $userID;
+    $userID = $_POST['userID']; */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,24 +22,27 @@
         <div class="divnavbar">
             <ul class="navbar" style="align-item: center;">
                 <li>
-                    <?php echo "<form name=\"myForm\" action=\"post1.php\" method=\"POST\" class=\"navform\">
+                <button><a href="post1.php">Post</a></button>
+                    <?php /* echo "<form name=\"myForm\" action=\"post1.php\" method=\"POST\" class=\"navform\">
                         <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
                         <button type=\"submit\" class=\"navbutton\">POST</button>
-                        </form>";
+                        </form>"; */
                     ?>
                 </li>
                 <li>
-                    <?php echo "<form name=\"myForm\" action=\"viewprofile.php\" method=\"POST\" class=\"navform\">
+                    <button><a href="myprof.php">My Profile</a></button>
+                    <?php /* echo "<form name=\"myForm\" action=\"viewprofile.php\" method=\"POST\" class=\"navform\">
                         <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
                         <button type=\"submit\" class=\"navbutton\">My Profile</button>
-                        </form>";
+                        </form>"; */
                     ?>
                 </li>
                 <li>
-                    <?php echo "<form name=\"myForm\" action=\"index.php\" method=\"POST\" class=\"navform\">
+                    <button><a href="index.php">Home</a></button>
+                    <?php /* echo "<form name=\"myForm\" action=\"index.php\" method=\"POST\" class=\"navform\">
                         <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
                         <button type=\"submit\" class=\"navbutton\">Home</button>
-                        </form>";
+                        </form>"; */
                     ?>
                 </li>
             </ul>
@@ -66,7 +72,6 @@
             
             <form action=\"userprofile.php\" method=\"POST\" style=\"margin-bottom: 0px;\">
                 <input type=\"hidden\" name=\"profileID\" id=\"profileID\" value=\"{$row['user_id']}\">
-                <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
                 <button type=\"submit\" class=\"profilebutton\" ><img src=\"{$row['profileimg']}\" alt=\"profileimg\" class=\"profileimage\"></button>
             </form>
 
@@ -76,7 +81,6 @@
             <div class=\"commentsec\" id=\"comment{$row['data_id']}\" style=\"display: none; padding: 10px;\">
                 <form action=\"comment.php\" method=\"POST\">
                     <input type=\"hidden\" name=\"data_id\" value=\"{$row['data_id']}\">
-                    <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
                     Comment: <input type=\"text\" name=\"commentcontent\" style=\"width:600px;\">
                     <button type=\"submit\" name=\"click\">Comment on Post</button>
                 </form>

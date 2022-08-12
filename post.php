@@ -1,3 +1,26 @@
+<?php
+    session_start();
+    $servername = "localhost";
+    $username = "root";
+    $password = "Shane4546?";
+    $dbname = "boardinfo";
+    
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    $query = "SELECT * 
+    FROM discussion d
+    join login_signup l
+    on d.user_id = l.user_id
+    where password = \"{$_SESSION["userName"]}\"
+    ";
+
+    $result = mysqli_query($conn, $query);
+    if ($result->num_rows > 0){
+        $row = mysqli_fetch_array($result);
+        $userID = $row['user_id'];
+    }
+    mysqli_close($conn);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,19 +30,13 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
+<?php
         if(isset($_POST["click"]))
         {
             $date = date('Y-m-d');
         }
-        $userID = $_POST['userID'];
         $title = $_POST["title"];
         $content = $_POST["content"];
-
-        /* echo "{$userID}<br>";
-        echo "{$title}<br>";
-        echo "{$content}<br>";
-        echo "uploaded date: {$date}"; */
 
         $servername = "localhost";
         $username = "root";
@@ -42,25 +59,7 @@
         $query = "UPDATE user_info set postmade = postmade + 1 where user_id = \"{$userID}\";";
         $result = mysqli_query($conn, $query);
         mysqli_close($conn);
-        
-        echo "<form name=\"myForm\" action=\"index.php\" method=\"POST\">
-                    <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
-            </form>";
-        echo "
-        <script>
-            window.onload=function(){
-                var auto = setTimeout(function(){ autoRefresh(); }, 100);
-    
-                function submitform(){
-                document.forms[\"myForm\"].submit();
-                }
-    
-                function autoRefresh(){
-                clearTimeout(auto);
-                auto = setTimeout(function(){ submitform(); autoRefresh(); }, 100);
-                }
-            }
-        </script>";
+        header("Location:/Bulletin%20Board/index.php");
     ?>
 </body>
 </html>

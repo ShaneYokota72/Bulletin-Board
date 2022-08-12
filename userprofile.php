@@ -1,5 +1,5 @@
 <?php
-    $userID = $_POST['userID'];
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,30 +11,18 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<header>
+    <header>
         <img src="reddit-logo.png" alt="Reddit-logo" style="max-height: 70px;margin-left: 5px; border-radius: 10px;">
         <div class="divnavbar">
-            <ul class="navbar" style="align-item: center;">
+        <ul class="navbar" style="align-item: center;">
                 <li>
-                    <?php echo "<form name=\"myForm\" action=\"post1.php\" method=\"POST\" class=\"navform\">
-                        <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
-                        <button type=\"submit\" class=\"navbutton\">POST</button>
-                        </form>";
-                    ?>
+                    <button><a href="post1.php">Post</a></button>
                 </li>
                 <li>
-                    <?php echo "<form name=\"myForm\" action=\"viewprofile.php\" method=\"POST\" class=\"navform\">
-                        <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
-                        <button type=\"submit\" class=\"navbutton\">My Profile</button>
-                        </form>";
-                    ?>
+                    <button><a href="myprof.php">My Profile</a></button>
                 </li>
                 <li>
-                    <?php echo "<form name=\"myForm\" action=\"index.php\" method=\"POST\" class=\"navform\">
-                        <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
-                        <button type=\"submit\" class=\"navbutton\">Home</button>
-                        </form>";
-                    ?>
+                    <button><a href="index.php">Home</a></button>
                 </li>
             </ul>
         </div>

@@ -1,5 +1,5 @@
 <?php
-    $userID = $_POST['userID'];
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,25 +16,13 @@
         <div class="divnavbar">
             <ul class="navbar" style="align-item: center;">
                 <li>
-                    <?php echo "<form name=\"myForm\" action=\"post1.php\" method=\"POST\" class=\"navform\">
-                        <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
-                        <button type=\"submit\" class=\"navbutton\">POST</button>
-                        </form>";
-                    ?>
+                    <button><a href="post1.php">Post</a></button>
                 </li>
                 <li>
-                    <?php echo "<form name=\"myForm\" action=\"viewprofile.php\" method=\"POST\" class=\"navform\">
-                        <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
-                        <button type=\"submit\" class=\"navbutton\">My Profile</button>
-                        </form>";
-                    ?>
+                    <button><a href="myprof.php">My Profile</a></button>
                 </li>
                 <li>
-                    <?php echo "<form name=\"myForm\" action=\"index.php\" method=\"POST\" class=\"navform\">
-                        <input type=\"hidden\" name=\"userID\" id=\"userID\" value=\"{$userID}\">
-                        <button type=\"submit\" class=\"navbutton\">Home</button>
-                        </form>";
-                    ?>
+                    <button><a href="index.php">Home</a></button>
                 </li>
             </ul>
         </div>
@@ -42,7 +30,6 @@
     
     <div>
         <form action="post.php" method="POST">
-            <input type="hidden" name="userID" value=<?php echo "{$userID}"; ?>>
             Title: <input type="text" id="title" name="title" placeholder="title"><br>
             Content: <textarea name="content" id="content" cols="30" rows="10" maxlength =500 placeholder="Write your content"></textarea><br>
             <button type="submit" name="click">Post</button>
