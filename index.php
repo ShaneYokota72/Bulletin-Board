@@ -2,8 +2,6 @@
 <!-- 8/8 monday 7-9       8/9 tuesday TBD-->
 <?php 
     session_start();
-    echo "UN is";
-    echo $_SESSION["userName"];
     /* global $userID;
     $userID = $_POST['userID']; */
 ?>
