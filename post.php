@@ -8,9 +8,7 @@
     $conn = mysqli_connect($servername, $username, $password, $dbname);
 
     $query = "SELECT * 
-    FROM discussion d
-    join login_signup l
-    on d.user_id = l.user_id
+    FROM login_signup
     where password = \"{$_SESSION["userName"]}\"
     ";
 

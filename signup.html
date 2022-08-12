@@ -11,10 +11,11 @@
     <div class="login">
         <h3>SIGN UP</h3>
         <form action="signup.php" method="POST">
-            USERNAME: <input type="text" name="UNSU" placeholder="USERNAME"><br>
-            PASSWORD: <input type="password" name="PWSU" placeholder="PASSWORD"><br>
-            CONFIRM PASSWORD: <input type="password" name="PWSUCF" placeholder="PASSWORD"><br>
-            <button type=submit>SIGN-UP</button>
+            USERNAME: <input type="text" name="UNSU" placeholder="USERNAME" required><br>
+            PASSWORD: <input type="password" name="PWSU" placeholder="PASSWORD" required><br>
+            CONFIRM PASSWORD: <input type="password" name="PWSUCF" placeholder="PASSWORD" required><br>
+            Profile Image: <input type="file" name="img" id="img"><br>
+            <button type="submit" name="date" id="date">Sign Up</button>
         </form>
         <h5>Already have an account? -> <a href="login.html">LOGIN</a></h5>
     </div>
