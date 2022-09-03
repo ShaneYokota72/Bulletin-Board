@@ -10,7 +10,7 @@
     /* echo $userID, $data_id, $comment, $date; */
     $servername = "localhost";
     $username = "root";
-    $password = "Shane4546?";
+    $password = "password";
     $dbname = "boardinfo";
 
     $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -32,7 +32,7 @@
 
     $servername = "localhost";
     $username = "root";
-    $password = "Shane4546?";
+    $password = "password?";
     $dbname = "boardinfo";
 
     $conn = mysqli_connect($servername, $username, $password, $dbname);

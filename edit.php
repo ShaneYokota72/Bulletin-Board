@@ -45,7 +45,7 @@
         /* echo "{$userID}<br>";
         echo "{$dataID}"; */
 
-        $conn = mysqli_connect("localhost", "root", "Shane4546?");
+        $conn = mysqli_connect("localhost", "root", "password");
         $query = "SELECT * from boardinfo.discussion where data_id = {$dataID}";
 
         $result = mysqli_query($conn, $query);

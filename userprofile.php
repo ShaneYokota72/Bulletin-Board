@@ -32,7 +32,7 @@
 
     $servername = "localhost";
     $username = "root";
-    $password = "Shane4546?";
+    $password = "password";
     $dbname = "boardinfo";
     
     // Create connection

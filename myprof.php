@@ -31,7 +31,7 @@
 
         $servername = "localhost";
         $username = "root";
-        $password = "Shane4546?";
+        $password = "password";
         $dbname = "boardinfo";
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
